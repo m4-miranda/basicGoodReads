@@ -1,0 +1,13 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+/* navbar */
+
+#logout-btn {
+  float: right;
+  margin-top: 7px;
+  margin-right: 2px;
+  width: 100px;
+  height: 40px;
+  text-align: center;
+}
