@@ -12,7 +12,7 @@
         <li><a href="#">Reading</a></li>
       </u1>
 
-      <%= link_to "Sign out!", '#', class: "btn btn-lg btn-primary navbar-right", id: "logout-btn"%>
+      <%= link_to "Sign out!", logout_path, method: :delete, class: "btn btn-lg btn-primary navbar-right", id: "logout-btn"%>
     <% end %>
   </div>
 </nav>

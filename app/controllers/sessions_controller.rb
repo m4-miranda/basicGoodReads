@@ -1,5 +1,11 @@
 class SessionsController < ApplicationController
   def new
+    if logged_in?
+      user = current_user
+      redirect_to user
+    else
+      render 'new'
+    end
   end
 
   def create
@@ -12,6 +18,11 @@ class SessionsController < ApplicationController
       flash.now[:danger] = "Incorrect password/username"
       render 'new'
     end
+  end
+
+  def delete
+    log_out
+    redirect_to root_url
   end
 
 end
