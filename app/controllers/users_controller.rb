@@ -5,11 +5,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    if logged_in?
-      @user = current_user
-      render 'home'
-    else
-      redirect_to login_path
-    end
+    @user = current_user
   end
 end
