@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
+  get 'lists/new'
+
+  get 'lists/show'
+
   root 'sessions#new'
 
   get '/login',   to: 'sessions#new'
   post '/login',  to: 'sessions#create'
   delete '/logout',  to: 'sessions#delete'
+
+  post '/lists', to: 'lists#add'
 
   post '/users', to: 'users#search'
   get '/users',  to: 'users#show'
