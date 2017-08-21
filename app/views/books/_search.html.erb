@@ -1,0 +1,11 @@
+<%= form_for(:books, url: search_path) do |f| %>
+
+<%= f.label :search %>
+<%= f.text_field :q, class: "form-control"%>
+
+<%= f.submit "Search", class:"btn btn-primary"%>
+<% end %>
+
+<% if @list_of_books != nil%>
+  <%= render @list_of_books%>
+<% end %>

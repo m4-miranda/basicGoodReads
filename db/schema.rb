@@ -10,16 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170821050626) do
+ActiveRecord::Schema.define(version: 20170821061740) do
 
   create_table "books", force: :cascade do |t|
-    t.string "API_id"
-    t.string "title"
+    t.string "api_id"
     t.string "image_link"
     t.integer "list_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["API_id"], name: "index_books_on_API_id"
+    t.index ["api_id"], name: "index_books_on_api_id"
     t.index ["list_id"], name: "index_books_on_list_id"
   end
 
