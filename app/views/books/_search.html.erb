@@ -6,6 +6,8 @@
 <%= f.submit "Search", class:"btn btn-primary"%>
 <% end %>
 
-<% if @list_of_books != nil%>
-  <%= render @list_of_books%>
-<% end %>
+<ul class="collection">
+  <% if @list_of_books != nil%>
+    <%= render @list_of_books%>
+  <% end %>
+</ul>

@@ -11,7 +11,7 @@ module BooksHelper
 
     data["items"].each do |book|
       # puts book["volumeInfo"]["imageLinks"]["smallThumbnail"]
-      list << Book.new(api_id: book["id"], image_link: book["volumeInfo"]["imageLinks"]["smallThumbnail"])
+      list << Book.new(api_id: book["id"], image_link: book["volumeInfo"]["imageLinks"]["smallThumbnail"], title: book["volumeInfo"]["title"] )
     end
     return list
   end
