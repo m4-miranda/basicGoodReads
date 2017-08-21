@@ -1,5 +1,8 @@
 class User < ApplicationRecord
-  
+  has_many :books, :through => :lists
+  has_many :lists
+
+
   before_save { email.downcase! }
   validates :name, presence: true, length: { maximum: 50 }
   validates :email, presence: true, length: { maximum: 255 }, uniqueness: { case_sensitive: false }
