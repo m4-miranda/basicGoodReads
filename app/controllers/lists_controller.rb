@@ -3,6 +3,8 @@ class ListsController < ApplicationController
   end
 
   def show
+    @user = current_user
+    @list_of_books = @user.lists.find(params[:list_id]).books
   end
 
   def add

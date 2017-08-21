@@ -1,2 +1,5 @@
-<h1>Lists#show</h1>
-<p>Find me in app/views/lists/show.html.erb</p>
+<ul class="list-group">
+  <% if @list_of_books != nil%>
+  <%= render @list_of_books%>
+  <% end %>
+</ul>
