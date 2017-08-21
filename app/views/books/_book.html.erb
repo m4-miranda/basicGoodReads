@@ -1,4 +1,11 @@
-<li class="collection-list" id="book-<%= book.api_id %>">
-  <%= book.title %>
-  <%= image_tag book.image_link%>
+<li class="list-group-item" id="book-<%= book.api_id %>">
+  <div class="row">
+    <div class="col-md-4">
+      <%= image_tag book.image_link, class: "img-responsive thumbnail"%>
+    </div>
+    <div class="col-md-8">
+      <h2><%= book.title %></h2>
+      <h4><%= book.title %></h4>
+    </div>
+  </div>
 </li>

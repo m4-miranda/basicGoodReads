@@ -5,8 +5,7 @@ Rails.application.routes.draw do
   post '/login',  to: 'sessions#create'
   delete '/logout',  to: 'sessions#delete'
 
-  post '/search', to: 'books#search'
-
+  post '/search', to: 'users#search'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :users
 end
