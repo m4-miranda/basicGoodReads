@@ -11,7 +11,7 @@
           <button type="button" class="btn btn-primary" id="update-book-btn" data-toggle="modal" data-target="#myModal-<%= book.api_id%>">Move to List</button>
         </div>
         <div class="col-md-1">
-          <%= button_to "Remove", books_path, method: :delete, params: { list_id: @desired_list.id, book_id: book.api_id },
+          <%= button_to "Remove", books_path, method: :delete, params: { list_id: @desired_list.list_id, book_id: book.api_id },
           class: "btn btn-primary",
             id: "remove-book-btn" %>
         </div>
