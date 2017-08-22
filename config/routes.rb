@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get '/books', to:'books#show'
   patch '/books', to: 'books#update'
 
-  post '/home', to: 'books#index'
+  post '/home', to: 'books#search'
   get '/home',  to: 'books#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :users

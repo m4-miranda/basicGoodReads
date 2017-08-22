@@ -26,8 +26,8 @@
           <div class="modal-body">
             Move <strong><%= book.title %></strong> to which list?
             <%= form_for(:lists, url: books_path, method: :patch ) do |f| %>
-              <%= select_tag(:new_list_id, options_from_collection_for_select(@user.lists.where.not(id: @desired_list.id), :id, :name), class: "form-control" ) %>
-              <%= f.hidden_field :old_list_id, :value => @desired_list.id %>
+              <%= select_tag(:new_list_id, options_from_collection_for_select(@user.lists.where.not(list_id: @desired_list.list_id), :list_id, :name), class: "form-control" ) %>
+              <%= f.hidden_field :old_list_id, :value => @desired_list.list_id %>
               <%= f.hidden_field :book_id, :value => book.api_id %>
               <%= f.submit "Move", class:"btn btn-primary", id: "list-modal-btn"%>
             <% end %>
