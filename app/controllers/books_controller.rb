@@ -10,7 +10,9 @@ class BooksController < ApplicationController
 
   def delete
     @user = current_user
-
+    @desired_list = @user.lists.find(params[:books][:list_id])
+    @desired_list.books.find_by(api_id: params[:books][:book_id]).destroy
+    redirect_to books_path(list_id: params[:books][:list_id])
   end
 
   def show

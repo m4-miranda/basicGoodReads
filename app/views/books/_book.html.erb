@@ -7,9 +7,11 @@
       <h2><%= book.title %></h2>
       <h4><%= book.title %></h4>
     </div>
-    <%= form_for(:books, :url=>{:action=>"delete", :controller=>"books"}, method: :delete ) do |f| %>
+    <%= form_for(:books, :method => "delete", url: books_path ) do |f| %>
       <%= f.hidden_field :book_id, :value => book.api_id %>
+      <%= f.hidden_field :list_id, :value => @desired_list.id%>
       <%= f.submit "Remove", class:"btn btn-primary"%>
     <% end %>
+
   </div>
 </li>
