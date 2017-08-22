@@ -31,3 +31,11 @@ input, textarea, select, .uneditable-input {
   margin-bottom: 15px;
   @include box_sizing
 }
+
+#search-add-btn {
+  width: 100px;
+  height: 40px;
+  float: right;
+  margin-top: 100px;
+  margin-right: 20px;
+}

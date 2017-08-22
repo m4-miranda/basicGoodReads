@@ -1,0 +1,35 @@
+<div class="col-lg-8 col-lg-offset-2">
+
+  <%= form_for(:books, url: home_path) do |f| %>
+
+  <%= f.label :search %>
+  <%= f.text_field :q, class: "form-control"%>
+
+  <%= f.submit "Search", class:"btn btn-primary"%>
+  <% end %>
+
+  <ul class="list-group">
+    <% if @list_of_books != nil%>
+      <% @list_of_books.each do |book| %>
+        <li class="list-group-item" id="book-<%= book.api_id %>">
+          <div class="row">
+            <div class="col-md-4">
+              <%= image_tag book.image_link, class: "img-responsive thumbnail"%>
+            </div>
+            <div class="col-md-8">
+              <h2><%= book.title %></h2>
+              <h4><%= book.title %></h4>
+            </div>
+            <%= form_for(:lists, :url=>{:action=>"add", :controller=>"lists"} ) do |f| %>
+              <%= f.hidden_field :book_id, :value => book.api_id %>
+              <%= f.hidden_field :book_title, :value => book.title %>
+              <%= f.hidden_field :book_img, :value => book.image_link %>
+              <%= f.submit "Add", class:"btn btn-primary", id: "search-add-btn"%>
+            <% end %>
+          </div>
+        </li>
+      <% end %>
+    <% end %>
+  </ul>
+
+</div>
