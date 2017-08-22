@@ -4,7 +4,8 @@ class ListsController < ApplicationController
 
   def show
     @user = current_user
-    @list_of_books = @user.lists.find(params[:list_id]).books
+    @desired_list = @user.lists.find(params[:list_id])
+    @list_of_books = @desired_list.books
   end
 
   def add
