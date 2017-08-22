@@ -11,7 +11,14 @@ module BooksHelper
 
     data["items"].each do |book|
       # puts book["volumeInfo"]["imageLinks"]["smallThumbnail"]
-      list << Book.new(api_id: book["id"], image_link: book["volumeInfo"]["imageLinks"]["smallThumbnail"], title: book["volumeInfo"]["title"] )
+      puts book["volumeInfo"]["title"]
+      single_book = Book.new(api_id: book["id"],
+                       image_link: book["volumeInfo"]["imageLinks"]["smallThumbnail"],
+                       title: book["volumeInfo"]["title"] )
+      if book["volumeInfo"]["authors"] != nil
+        single_book.author = book["volumeInfo"]["authors"].join(', ')
+      end
+      list << single_book
     end
     return list
   end
