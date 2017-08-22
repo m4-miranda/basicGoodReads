@@ -11,7 +11,7 @@ module BooksHelper
 
     data["items"].each do |book|
       # puts book["volumeInfo"]["imageLinks"]["smallThumbnail"]
-    
+
       single_book = Book.new(api_id: book["id"],
                        image_link: book["volumeInfo"]["imageLinks"]["smallThumbnail"],
                        title: book["volumeInfo"]["title"] )
@@ -21,6 +21,11 @@ module BooksHelper
       list << single_book
     end
     return list
+  end
+
+  def volume_from_api(api_id)
+    url = "https://www.googleapis.com/books/v1/volumes/"+api_id
+    data = JSON.parse(open(url).read)
   end
 
 end

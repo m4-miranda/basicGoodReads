@@ -15,61 +15,7 @@
         <%= f.submit "Search", class:"btn btn-primary"%>
       <% end %>
 
-      <ul class="list-group">
-        <% if @list_of_books != nil%>
-          <% @list_of_books.each do |book| %>
-            <li class="list-group-item" id="book-<%= book.api_id %>">
-              <div class="row">
-                <div class="col-md-4">
-                  <%= image_tag book.image_link, class: "img-responsive thumbnail"%>
-                </div>
-                <div class="col-md-8">
-                  <h2><%= book.title %></h2>
-                  <h4><%= book.author %></h4>
-                </div>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal-<%= book.api_id%>">Add to List</button>
-
-
-                <div class="modal fade" id="myModal-<%= book.api_id%>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                  <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Add to list?</h4>
-                      </div>
-                      <div class="modal-body">
-                        Add <strong><%= book.title %></strong> to which list?
-                        <%= form_for(:lists, :url=>{:action=>"add", :controller=>"books"} ) do |f| %>
-                          <%= select_tag(:list_id, options_from_collection_for_select(@user.lists.all, :list_id, :name), class: "form-control" ) %>
-                          <%= f.hidden_field :book_id, :value => book.api_id %>
-                          <%= f.hidden_field :book_title, :value => book.title %>
-                          <%= f.hidden_field :book_img, :value => book.image_link %>
-                          <%= f.hidden_field :author, :value => book.author %>
-                          <%= f.submit "Add", class:"btn btn-primary", id: "search-add-btn"%>
-                        <% end %>
-                      </div>
-                      <div class="modal-footer">
-
-                          <button type="button" class="btn btn-default" data-dismiss="modal" id="modal-close-btn">Close</button>
-
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-                  <div class="modal-dialog modal-sm" role="document">
-                    <div class="modal-content">
-
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </li>
-          <% end %>
-        <% end %>
-      </ul>
+      <%= render 'search'%>
 
 
     </div>

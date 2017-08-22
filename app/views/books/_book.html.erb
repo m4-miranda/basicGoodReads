@@ -4,11 +4,12 @@
       <%= image_tag book.image_link, class: "img-responsive thumbnail"%>
     </div>
     <div class="col-md-8">
-      <h2><%= book.title %></h2>
+      <h2><%= link_to book.title, '#detailModal', :id => 'detail_link', "data-toggle" => "modal", 'data-target' => "#detailModal-"+book.api_id %></h2>
       <h4><%= book.author %></h4>
       <div class="row">
         <div class="col-md-1">
-          <button type="button" class="btn btn-primary" id="update-book-btn" data-toggle="modal" data-target="#myModal-<%= book.api_id%>">Move to List</button>
+
+          <button type="button" class="btn btn-primary" id="update-book-btn" data-toggle="modal" data-target="#updateModal-<%= book.api_id%>">Move to List</button>
         </div>
         <div class="col-md-1">
           <%= button_to "Remove", books_path, method: :delete, params: { list_id: @desired_list.list_id, book_id: book.api_id },
@@ -16,7 +17,7 @@
             id: "remove-book-btn" %>
         </div>
     </div>
-    <div class="modal fade" id="myModal-<%= book.api_id%>" tabindex="-1" role="dialog" aria-labelledby="updateBook">
+    <div class="modal fade" id="updateModal-<%= book.api_id%>" tabindex="-1" role="dialog" aria-labelledby="updateBook">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -31,6 +32,38 @@
               <%= f.hidden_field :book_id, :value => book.api_id %>
               <%= f.submit "Move", class:"btn btn-primary", id: "list-modal-btn"%>
             <% end %>
+          </div>
+          <div class="modal-footer">
+
+              <button type="button" class="btn btn-default" data-dismiss="modal" id="modal-close-btn">Close</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="detailModal-<%= book.api_id%>" tabindex="-1" role="dialog" aria-labelledby="detailBook">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="modalBookTitle"><strong><%= book.title %></strong></h4>
+          </div>
+          <div class="modal-body">
+            <% data = volume_from_api book.api_id%>
+
+            <strong>Authors:</strong> <%= data["volumeInfo"]["authors"].join(',')%>
+            <br>
+            <br>
+
+            <strong>Publish date:</strong> <%= data["volumeInfo"]["publishedDate"]%>
+
+            <br>
+            <br>
+            <strong>Description:</strong><br> <%= data["volumeInfo"]["description"] %>
+            <br>
+            <br>
+            <strong>ISBN: </strong><%= data["volumeInfo"]["industryIdentifiers"][1]["identifier"]%>
           </div>
           <div class="modal-footer">
 
