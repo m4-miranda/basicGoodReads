@@ -32,7 +32,7 @@
                   </div>
                   <div class="modal-body">
                     Add <strong><%= book.title %></strong> to which list?
-                    <%= form_for(:lists, :url=>{:action=>"add", :controller=>"lists"} ) do |f| %>
+                    <%= form_for(:lists, :url=>{:action=>"add", :controller=>"books"} ) do |f| %>
                       <%= select_tag(:list_id, options_from_collection_for_select(@user.lists.all, :id, :name), class: "form-control" ) %>
                       <%= f.hidden_field :book_id, :value => book.api_id %>
                       <%= f.hidden_field :book_title, :value => book.title %>

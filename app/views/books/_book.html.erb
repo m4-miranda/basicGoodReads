@@ -7,11 +7,9 @@
       <h2><%= book.title %></h2>
       <h4><%= book.title %></h4>
     </div>
-    <%= form_for(:lists, :url=>{:action=>"add", :controller=>"lists"} ) do |f| %>
+    <%= form_for(:books, :url=>{:action=>"delete", :controller=>"books"}, method: :delete ) do |f| %>
       <%= f.hidden_field :book_id, :value => book.api_id %>
-      <%= f.hidden_field :book_title, :value => book.title %>
-      <%= f.hidden_field :book_img, :value => book.image_link %>
-      <%= f.submit "Add", class:"btn btn-primary"%>
+      <%= f.submit "Remove", class:"btn btn-primary"%>
     <% end %>
   </div>
 </li>
