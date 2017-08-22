@@ -7,9 +7,9 @@
       <u1 class="nav navbar-nav">
         <li class="active"><a href="/home">Home</a></li>
         <li><%= link_to 'Favorites', lists_path(:list_id=>"1")%></li>
-        <li><a href="#">To-Read</a></li>
-        <li><a href="#">Read</a></li>
-        <li><a href="#">Reading</a></li>
+        <li><%= link_to 'Read', lists_path(:list_id=>"3")%></li>
+        <li><%= link_to 'Reading', lists_path(:list_id=>"4")%></li>
+        <li><%= link_to 'To-Read', lists_path(:list_id=>"2")%></li>
       </u1>
 
       <%= link_to "Sign out!", logout_path, method: :delete, class: "btn btn-lg btn-primary navbar-right", id: "logout-btn"%>

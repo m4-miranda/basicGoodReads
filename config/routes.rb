@@ -11,7 +11,7 @@ Rails.application.routes.draw do
 
   post '/lists', to: 'lists#add'
 
-  post '/home', to: 'books#search'
+  post '/home', to: 'books#index'
   get '/home',  to: 'books#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :users

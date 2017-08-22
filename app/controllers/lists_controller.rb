@@ -9,9 +9,10 @@ class ListsController < ApplicationController
 
   def add
     @user = current_user
-    @user.lists.find(1).books.create( title: params[:lists][:book_title],
+    @user.lists.find(params[:list_id]).books.create( title: params[:lists][:book_title],
                                       api_id: params[:lists][:book_id],
                                       image_link: params[:lists][:book_img] )
-    redirect_to @user
+    flash.now[:success] = "Book added to favorites"
+    redirect_to home_path
   end
 end

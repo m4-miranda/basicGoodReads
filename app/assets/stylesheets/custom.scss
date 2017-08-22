@@ -34,8 +34,14 @@ input, textarea, select, .uneditable-input {
 
 #search-add-btn {
   width: 100px;
-  height: 40px;
+  height: 30px;
   float: right;
-  margin-top: 100px;
+  margin-top: 30px;
   margin-right: 20px;
+}
+
+#modal-close-btn{
+
+  margin-right: 20px;
+  float: bottom;
 }

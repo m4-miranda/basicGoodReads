@@ -10,10 +10,10 @@ end
 gem 'rails', '~> 5.1.2'
 
 gem 'will_paginate', '3.1.5'
-
+gem 'jquery-rails'
 gem 'bcrypt', '3.1.11'
 gem 'bootstrap-sass', '3.3.7'
-
+gem 'autoprefixer-rails'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
