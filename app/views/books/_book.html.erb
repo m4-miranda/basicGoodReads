@@ -6,12 +6,12 @@
     <div class="col-md-8">
       <h2><%= book.title %></h2>
       <h4><%= book.title %></h4>
+
+      <%= button_to "Remove2", books_path, method: :delete, params: { list_id: @desired_list.id, book_id: book.api_id },
+                                                                      class: "btn btn-primary",
+                                                                      id: "list-remove-btn" %>
     </div>
-    <%= form_for(:books, :method => "delete", url: books_path ) do |f| %>
-      <%= f.hidden_field :book_id, :value => book.api_id %>
-      <%= f.hidden_field :list_id, :value => @desired_list.id%>
-      <%= f.submit "Remove", class:"btn btn-primary"%>
-    <% end %>
+
 
   </div>
 </li>
