@@ -46,7 +46,22 @@ input, textarea, select, .uneditable-input {
   float: bottom;
 }
 
-#list-remove-btn{
+#remove-book-btn{
   float: bottom;
   width: 100px;
+  margin-left: 200px;
+}
+
+#update-book-btn{
+  float: bottom;
+
+
+}
+
+#list-modal-btn{
+  width: 100px;
+  height: 35px;
+  float: right;
+  margin-top: 30px;
+  margin-right: 20px;
 }

@@ -37,6 +37,7 @@
                       <%= f.hidden_field :book_id, :value => book.api_id %>
                       <%= f.hidden_field :book_title, :value => book.title %>
                       <%= f.hidden_field :book_img, :value => book.image_link %>
+                      <%= f.hidden_field :author, :value => book.author %>
                       <%= f.submit "Add", class:"btn btn-primary", id: "search-add-btn"%>
                     <% end %>
                   </div>

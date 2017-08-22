@@ -10,7 +10,8 @@ Rails.application.routes.draw do
   post '/books', to: 'books#add'
   delete '/books', to: 'books#delete'
   get '/books', to:'books#show'
-  
+  patch '/books', to: 'books#update'
+
   post '/home', to: 'books#index'
   get '/home',  to: 'books#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
