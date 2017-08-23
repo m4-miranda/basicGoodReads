@@ -1,16 +1,15 @@
 class UsersController < ApplicationController
 
   def new
-    @user = User.new
-  end
-
-  def show
-    @user = current_user
+    if logged_in?
+      redirect_to home_path
+    else
+      @user = User.new
+    end
   end
 
   def create
     @user = User.new(user_params)
-
     if @user.save
       initialize_list_user @user
       log_in @user

@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
-  get 'lists/new'
 
-  root 'sessions#new'
+  root 'books#index'
 
   get '/login',   to: 'sessions#new'
   post '/login',  to: 'sessions#create'
