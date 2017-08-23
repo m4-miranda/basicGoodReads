@@ -20,8 +20,13 @@ class BooksController < ApplicationController
 
   def show
     @user = current_user
-    @desired_list = @user.lists.find_by(list_id: params[:list_id])
-    @list_of_books = @desired_list.books
+    if params[:list_id].to_i <= @user.lists.count
+      @user = current_user
+      @desired_list = @user.lists.find_by(list_id: params[:list_id])
+      @list_of_books = @desired_list.books
+    else
+      redirect_to home_path
+    end
   end
 
   def add
