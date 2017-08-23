@@ -1,2 +1,29 @@
-<h1>Lists#new</h1>
-<p>Find me in app/views/lists/new.html.erb</p>
+<h1>List Settings</h1>
+
+<div class="container" id="settings-container">
+  <div class="row">
+    <div class="col-md-6">
+      <h3>
+        Create new list
+      </h3>
+      <%= form_for(:lists, url: settings_path, method: :put, html: { onsubmit: "return confirm('Add new list?');" } ) do |f| %>
+        <%= f.label :name%>
+        <%= f.text_field :name, class: "form-control"%>
+
+        <%= f.submit "Create List", class:"btn btn-primary settings-btn", id: "create-list-btn"%>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row" id="settings-delete-row">
+    <div class="col-md-6">
+      <h3>
+        Delete List
+      </h3>
+      <%= form_for(:lists, url: settings_path, method: :delete, html: { onsubmit: "return confirm('Delete list?');" } ) do |f| %>
+        <%= select_tag(:list_id, options_from_collection_for_select(@user.lists.where.not(list_id: 1..4), :list_id, :name), class: "form-control" ) %>
+        <%= f.submit "Delete", class:"btn btn-primary settings-btn", id: "delete-list-btn"%>
+      <% end %>
+    </div>
+  </div>
+</div>

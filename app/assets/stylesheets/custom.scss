@@ -94,3 +94,21 @@ input {
     color: $state-danger-text;
   }
 }
+
+#settings-container {
+    padding: 5%;
+    border: 2px solid dimgrey;
+    border-radius: 20px;
+    box-shadow: 0px 10px 10px rgba(34, 34, 34, 0.7);
+}
+
+#settings-delete-row {
+  border-top: 2px dashed darkgray;
+  margin-top: 5%;
+  padding-top: 2%;
+}
+
+.settings-btn {
+  width: 100px;
+  float: left;
+}
