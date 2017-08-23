@@ -10,9 +10,35 @@
         <li><%= link_to 'Read', books_path(:list_id=>"3")%></li>
         <li><%= link_to 'Reading', books_path(:list_id=>"4")%></li>
         <li><%= link_to 'To-Read', books_path(:list_id=>"2")%></li>
+        <% @user = current_user %>
+        <% if @user.lists.count > 4 %>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">More<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <% @user.lists.where.not(list_id: 1..4).each do |list|%>
+                  <li><%= link_to list.name, books_path(:list_id=>list.list_id)%></li>
+                <% end %>
+              </ul>
+          </li>
+        <% end %>
       </u1>
-
-      <%= link_to "Sign out!", logout_path, method: :delete, class: "btn btn-lg btn-primary navbar-right", id: "logout-btn"%>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <%= link_to '<span class="glyphicon glyphicon-cog"></span> Settings'.html_safe, '#' %>
+        </li>
+        <li>
+          <%= link_to '<span class="glyphicon glyphicon-log-out"></span> Logout'.html_safe, logout_path, method: :delete %>
+        </li>
+      </ul>
+    <% else %>
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <%= link_to '<span class="glyphicon glyphicon-user"></span> Signup'.html_safe, signup_path %>
+      </li>
+      <li>
+        <%= link_to '<span class="glyphicon glyphicon-log-in"></span> Login'.html_safe, login_path%>
+      </li>
+    </ul>
     <% end %>
   </div>
 </nav>
