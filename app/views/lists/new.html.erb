@@ -6,7 +6,7 @@
       <h3>
         Create new list
       </h3>
-      <%= form_for(:lists, url: settings_path, method: :put, html: { onsubmit: "return confirm('Add new list?');" } ) do |f| %>
+      <%= form_for(:lists, url: settings_path, method: :post, html: { onsubmit: "return confirm('Add new list?');" } ) do |f| %>
         <%= f.label :name%>
         <%= f.text_field :name, class: "form-control"%>
 
