@@ -24,5 +24,15 @@ class ListsController < ApplicationController
     end
   end
 
+  def update
+    if logged_in?
+      @user = current_user
+      @target_list = @user.lists.find_by( list_id: params[:list_id] )
+      @target_list.name = params[:lists][:name]
+      @target_list.save
+      redirect_to books_path(list_id: params[:list_id])
+    end
+  end
+
 
 end

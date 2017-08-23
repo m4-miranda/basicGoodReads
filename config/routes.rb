@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   get '/settings',  to: 'lists#new'
   delete '/settings', to: 'lists#delete'
   post '/settings',  to: 'lists#create'
+  patch '/settings', to: 'lists#update'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :users
 end

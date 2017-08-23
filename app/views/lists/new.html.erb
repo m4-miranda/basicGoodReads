@@ -15,6 +15,22 @@
     </div>
   </div>
 
+  <div class="row" id="settings-update-row">
+    <div class="col-md-6">
+      <h3>
+        Update List Name
+      </h3>
+      <%= form_for(:lists, url: settings_path, method: :patch, html: { onsubmit: "return confirm('Rename list?');" } ) do |f| %>
+        <%= select_tag(:list_id, options_from_collection_for_select(@user.lists.where.not(list_id: 1..4), :list_id, :name), class: "form-control" ) %>
+
+        <%= f.label :name%>
+        <%= f.text_field :name, class: "form-control"%>
+        
+        <%= f.submit "Rename", class:"btn btn-primary settings-btn", id: "update-list-btn"%>
+      <% end %>
+    </div>
+  </div>
+
   <div class="row" id="settings-delete-row">
     <div class="col-md-6">
       <h3>
@@ -26,4 +42,6 @@
       <% end %>
     </div>
   </div>
+
+
 </div>
