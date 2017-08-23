@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170822112217) do
+ActiveRecord::Schema.define(version: 20170823074005) do
 
   create_table "books", force: :cascade do |t|
     t.string "api_id"
@@ -20,6 +20,9 @@ ActiveRecord::Schema.define(version: 20170822112217) do
     t.datetime "updated_at", null: false
     t.string "title"
     t.string "author"
+    t.text "description"
+    t.string "publishedDate"
+    t.string "ISBN"
     t.index ["api_id"], name: "index_books_on_api_id"
     t.index ["list_id"], name: "index_books_on_list_id"
   end

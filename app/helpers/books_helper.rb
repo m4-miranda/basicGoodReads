@@ -14,10 +14,20 @@ module BooksHelper
 
       single_book = Book.new(api_id: book["id"],
                        image_link: book["volumeInfo"]["imageLinks"]["smallThumbnail"],
-                       title: book["volumeInfo"]["title"] )
+                       title: book["volumeInfo"]["title"],
+                       publishedDate: book["volumeInfo"]["publishedDate"],
+                       description: book["volumeInfo"]["description"])
       if book["volumeInfo"]["authors"] != nil
         single_book.author = book["volumeInfo"]["authors"].join(', ')
       end
+
+      if book["volumeInfo"]["industryIdentifiers"][1] != nil
+        single_book.ISBN = book["volumeInfo"]["industryIdentifiers"][1]["identifier"]
+      else
+        single_book.ISBN = book["volumeInfo"]["industryIdentifiers"][0]["identifier"]
+      end
+
+
       list << single_book
     end
     return list

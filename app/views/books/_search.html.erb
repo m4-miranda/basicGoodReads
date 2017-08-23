@@ -48,18 +48,20 @@
                   <h4 class="modal-title" id="modalBookTitle"><strong><%= book.title %></strong></h4>
                 </div>
                 <div class="modal-body">
-                  <% data = volume_from_api book.api_id%>
 
-                  <strong>Authors:</strong> <%= data["volumeInfo"]["authors"].join(',')%>
+                  <strong>Authors:</strong> <%= book.author%>
                   <br>
                   <br>
 
-                  <strong>Publish date:</strong> <%= data["volumeInfo"]["publishedDate"]%>
+                  <strong>Publish date:</strong> <%= book.publishedDate%>
 
                   <br>
                   <br>
-                  <strong>Description:</strong><br> <%= data["volumeInfo"]["description"] %>
-                  
+                  <strong>Description:</strong><br> <%= book.description %>
+                  <br>
+                  <br>
+                  <%= link_to 'Google Books', "https://www.googleapis.com/books/v1/volumes/%"+book.api_id %>
+
                 </div>
                 <div class="modal-footer">
 
