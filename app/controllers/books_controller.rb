@@ -32,7 +32,7 @@ class BooksController < ApplicationController
       if params[:list_id].to_i <= @user.lists.count
         @user = current_user
         @desired_list = @user.lists.find_by(list_id: params[:list_id])
-        @list_of_books = @desired_list.books
+        @list_of_books = @desired_list.books.all
       else
         redirect_to home_path
       end
