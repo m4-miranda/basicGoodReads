@@ -15,7 +15,11 @@
         <%= f.submit "Search", class:"btn btn-primary"%>
       <% end %>
 
-      <%= render 'search'%>
+      <ul class="list-group">
+        <% if @list_of_books != nil%>
+          <%= render partial: 'book', collection: @list_of_books, locals: {search: true} %>
+        <% end %>
+      </ul>
 
 
     </div>

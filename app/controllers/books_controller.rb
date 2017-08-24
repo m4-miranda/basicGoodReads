@@ -44,10 +44,9 @@ class BooksController < ApplicationController
   def add
     if logged_in?
       @user = current_user
-      @user.lists.find_by(list_id: params[:list_id]).books.create( title: params[:lists][:book_title],
-                                        api_id: params[:lists][:book_id],
-                                        image_link: params[:lists][:book_img],
-                                        author: params[:lists][:author] )
+      new_book = volume_from_api params[:books][:api_id]
+      @user.lists.find_by(list_id: params[:list_id]).books.create( new_book.attributes )
+
       flash.now[:success] = "Book added to favorites"
       redirect_to books_path(list_id: params[:list_id])
     end
@@ -62,5 +61,6 @@ class BooksController < ApplicationController
       redirect_to books_path(list_id: params[:new_list_id])
     end
   end
+
 
 end

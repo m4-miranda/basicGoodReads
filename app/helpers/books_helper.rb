@@ -21,10 +21,12 @@ module BooksHelper
         single_book.author = book["volumeInfo"]["authors"].join(', ')
       end
 
-      if book["volumeInfo"]["industryIdentifiers"][1] != nil
-        single_book.ISBN = book["volumeInfo"]["industryIdentifiers"][1]["identifier"]
-      else
-        single_book.ISBN = book["volumeInfo"]["industryIdentifiers"][0]["identifier"]
+      if book["volumeInfo"]["industryIdentifiers"] != nil
+        if book["volumeInfo"]["industryIdentifiers"][1] != nil
+          single_book.ISBN = book["volumeInfo"]["industryIdentifiers"][1]["identifier"]
+        else
+          single_book.ISBN = book["volumeInfo"]["industryIdentifiers"][0]["identifier"]
+        end
       end
 
 
@@ -35,7 +37,26 @@ module BooksHelper
 
   def volume_from_api(api_id)
     url = "https://www.googleapis.com/books/v1/volumes/"+api_id
-    data = JSON.parse(open(url).read)
+    book = JSON.parse(open(url).read)
+
+    single_book = Book.new(api_id: book["id"],
+                     image_link: book["volumeInfo"]["imageLinks"]["smallThumbnail"],
+                     title: book["volumeInfo"]["title"],
+                     publishedDate: book["volumeInfo"]["publishedDate"],
+                     description: book["volumeInfo"]["description"])
+
+    if book["volumeInfo"]["authors"] != nil
+      single_book.author = book["volumeInfo"]["authors"].join(', ')
+    end
+
+    if book["volumeInfo"]["industryIdentifiers"] != nil
+      if book["volumeInfo"]["industryIdentifiers"][1] != nil
+        single_book.ISBN = book["volumeInfo"]["industryIdentifiers"][1]["identifier"]
+      else
+        single_book.ISBN = book["volumeInfo"]["industryIdentifiers"][0]["identifier"]
+      end
+    end
+    single_book
   end
 
 end
