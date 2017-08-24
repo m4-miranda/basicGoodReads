@@ -20,11 +20,13 @@ module BooksHelper
       if book["volumeInfo"]["authors"] != nil
         single_book.author = book["volumeInfo"]["authors"].join(', ')
       end
-
-      if book["volumeInfo"]["industryIdentifiers"][1] != nil
-        single_book.ISBN = book["volumeInfo"]["industryIdentifiers"][1]["identifier"]
-      else
-        single_book.ISBN = book["volumeInfo"]["industryIdentifiers"][0]["identifier"]
+      
+      if book["volumeInfo"]["industryIdentifiers"] != nil
+        if book["volumeInfo"]["industryIdentifiers"][1] != nil
+          single_book.ISBN = book["volumeInfo"]["industryIdentifiers"][1]["identifier"]
+        else
+          single_book.ISBN = book["volumeInfo"]["industryIdentifiers"][0]["identifier"]
+        end
       end
 
 
